@@ -11,8 +11,7 @@
 | 平台 | 支持版本 | 说明 |
 |------|----------|------|
 | Windows | Windows 10 / Server 2016 及以上 | 推荐 64 位；需自备 FFmpeg（或在配置中指定路径） |
-| Linux | Ubuntu 22.04 LTS | 推荐用于生产环境；支持后台守护与服务安装 |
-| Linux | CentOS 7.x | 需自行安装较新 FFmpeg 与显卡驱动（若使用 GPU 转码） |
+| Linux | Ubuntu 22.04 LTS & CentOS 7.x | 推荐用于生产环境；支持后台守护与服务安装 |
 
 > 管理后台与 WebTV 通过浏览器访问；转码核心依赖 **FFmpeg**。英伟达（NVENC）硬件转码在 Linux 下可在控制台使用相关辅助功能（视显卡与驱动环境而定）。
 
