@@ -1,24 +1,29 @@
-# msServer 3.0.2
+# msServer 3.0.3
 
 **流媒体转码 / DVB 接收 / 多协议出流平台**（C++ 重写版）
 
 > 历史 2.x 版本为 Go 实现，源码已不可用。自 **3.0** 起全部以 **C++** 重写：单二进制部署、Web 管理嵌入内存、CentOS 7 / Ubuntu 22.04+ 可运行。
 
-默认管理端口：**9988** · 产品标识：`Server: msServer/3.0.2`
+默认管理端口：**9988** · 产品标识：`Server: msServer/3.0.3`
 
 ---
 
-## 界面预览（3.0.2）
+## 界面预览（3.0.3）
 
-| 登录 | 转码频道 |
-|------|----------|
-| ![登录](docs/screenshots-3.0.2/01-login.png) | ![转码](docs/screenshots-3.0.2/02-transcode-channels.png) |
+| 概览 | 接收 |
+|------|------|
+| ![概览](docs/screenshots-3.0.3/01-overview.jpg) | ![接收](docs/screenshots-3.0.3/02-receive.jpg) |
 
-| 监控连接 | 发布源配置示例 |
-|----------|----------------|
-| ![监控](docs/screenshots-3.0.2/03-monitor-connections.png) | ![源地址](docs/screenshots-3.0.2/04-pub-channel-edit.png) |
+| 转码频道 | 新增转码 |
+|----------|----------|
+| ![转码](docs/screenshots-3.0.3/03-transcode-channels.jpg) | ![新增](docs/screenshots-3.0.3/04-transcode-add.jpg) |
 
-更多截图见 [`docs/screenshots-3.0.2/`](docs/screenshots-3.0.2/)。
+| 出流 | CAM |
+|------|-----|
+| ![出流](docs/screenshots-3.0.3/05-egress.jpg) | ![CAM](docs/screenshots-3.0.3/06-cam.jpg) |
+
+更多截图见 [`docs/screenshots-3.0.3/`](docs/screenshots-3.0.3/)。  
+（示例地址使用 `127.0.0.1` 或已遮罩，不含真实公网 IP。）
 
 ---
 
@@ -89,7 +94,8 @@
 - **AV1 可封装进 MPEG-TS**（HTTP-TS / mskey）
 - 源地址热更新、频道启停/批量重启、实时状态与日志
 - 并发转码路数可配置（默认可不限制）
-- **3.0.2**：HTTP-TS 与 HLS 同开时，tee **主流优先**；HLS 等支路失败自动重连，避免单播空流
+- 频道可配置 **时间戳修复**（DVB 默认不加 `genpts+igndts`，避免追流顿挫）
+- **3.0.2+**：HTTP-TS 与 HLS 同开时，tee **主流优先**；HLS 等支路失败自动重连，避免单播空流
 
 ### 5. 多协议出流
 
@@ -109,7 +115,7 @@
 ### 6. 监控与安全
 
 - **TS 拉流连接监控**：频道、客户端 IP、时长、流量
-- **3.0.2**：同机多连接按会话独立计数（修复「本机 pub 拉本机 TS 却显示 0 连接」）
+- **3.0.2+**：同机多连接按会话独立计数（修复「本机 pub 拉本机 TS 却显示 0 连接」）
 - IP 封禁；出流白名单可与系统防火墙联动
 - **防火墙 Web 管理**：ufw / firewalld / iptables
 - 登录 Cookie 会话；账户改密；敏感接口鉴权
@@ -174,7 +180,8 @@ HLS 高并发建议使用内存盘目录（如 `/dev/shm/msdvb`）。
 
 | 版本 | 说明 |
 |------|------|
-| **3.0.2** | 当前：tee 主流/支路重连、监控连接唯一 ID、版本号 3.0.2 |
+| **3.0.3** | 当前：界面截图更新；时间戳修复可配；DVB 默认不加 genpts+igndts |
+| **3.0.2** | tee 主流/支路重连、监控连接唯一 ID |
 | 3.0.x | C++ 首代完整产品线（DVB + 转码 + 多协议出流） |
 | 2.0.x | Go 旧版（源码已丢失，仅历史发布包可参考） |
 
@@ -195,4 +202,4 @@ HLS 高并发建议使用内存盘目录（如 `/dev/shm/msdvb`）。
 
 ---
 
-*msServer 3.0.2 · C++ Streaming Platform*
+*msServer 3.0.3 · C++ Streaming Platform*
